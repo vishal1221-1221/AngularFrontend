@@ -1,0 +1,191 @@
+<ng-container *ngIf="!user">
+    <img style="width: 100%;" src="../../../assets/return.jpg">
+
+</ng-container>
+<ng-container *ngIf="user">
+    
+    <div class="mb-5 p-4 bg-white shadow-sm bg-dark">
+        <ng-container *ngIf="step1">
+            <h2 class="heading">Order Processing Details</h2>
+            <div  class="modal modal-sheet position-static d-block py-1 " tabindex="-1" role="dialog" id="modalSheet">
+                <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-content rounded-4">
+                        <div class="modal-header border-bottom-0"></div>
+                        <div class="modal-body py-0">
+                            <form [formGroup]="step1Form">
+                                <div class="form-row" style="">
+                                    <div class="form-group">
+                                        <label for="inputName"><b>Full Name</b></label>
+                                        <input type="text" class="form-control" id="inputName" placeholder="Name" formControlName="name" [ngClass]="{
+                        'is-invalid': submitted && f['name'].errors
+                      }" />
+                                        <div class="invalid-feedback" *ngIf="submitted && f['name'].errors">
+                                            <div *ngIf="f['name'].errors['required']">
+                                                Name is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    
+                                    <div class="form-group ">
+                                        <label for="inputNumber"><b>Contact Number</b></label>
+                                        <input type="tel" class="form-control" id="inputNumber" placeholder="Phone No." formControlName="contactNumber" [ngClass]="{
+                        'is-invalid': submitted && f['contactNumber'].errors
+                      }" />
+                                        <div class="invalid-feedback" *ngIf="submitted && f['contactNumber'].errors">
+                                            <div *ngIf="f['contactNumber'].errors['required']">
+                                                Phone Number is required
+                                            </div>
+                                            <div *ngIf="f['contactNumber'].errors['minlength']">
+                                                Minimum 10 characters
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="form-row" style="">
+                                    <div class="form-group">
+                                        <label for="inputComName"><b>Component Name</b></label>
+                                        <input type="text" class="form-control" id="inputComName" placeholder="Component Name" formControlName="componentName" [ngClass]="{
+                        'is-invalid': submitted && f['componentName'].errors
+                      }" />
+                                        <div class="invalid-feedback" *ngIf="submitted && f['componentName'].errors">
+                                            <div *ngIf="f['componentName'].errors['required']">
+                                                Component Name is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="form-group ">
+                                        <label for="inputQty"><b>Quantity</b></label>
+                                        <input type="number" class="form-control" id="inputQty" placeholder="Quantity" formControlName="quantity" [ngClass]="{
+                        'is-invalid': submitted && f['quantity'].errors
+                      }" />
+                                        <div class="invalid-feedback" *ngIf="submitted && f['quantity'].errors">
+                                            <div *ngIf="f['quantity'].errors['required']">
+                                                Quantity is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+  <br/>
+  <br/>
+                                <div class="form-row" style="">
+                                    <div class="form-group">
+                                        <div style="display: flex; justify-content: space-between">
+                                            <label for="inlineFormCustomSelectPref"><b>Component Type:</b></label>
+                      <div>
+                        <input
+                          id="male"
+                          type="radio"
+                          value="Integral"
+                          name="componentType"
+                          formControlName="componentType"
+                        />
+                        <label for="Integral">&nbsp;Integral</label>
+                                        </div>
+                                        <div>
+                                            <input id="male" type="radio" value="Accessory" name="componentType" formControlName="componentType" />
+                                            <label for="Accessory">&nbsp;Accessory</label>
+                                        </div>
+                                        <div *ngIf="submitted && f['componentType'].invalid" class="val">
+                                            Select one
+                                        </div>
+                                    </div>
+                                    <br />
+                                </div>
+
+                                <div class="form-group ">
+                                    <label for="inputDesc"><b>Description</b></label>
+                                    <br/>
+                                    <textarea rows="4" class="form-control" id="inputDesc" formControlName="description" [ngClass]="{
+                        'is-invalid': submitted && f['description'].errors
+                      }"></textarea>
+                                    <div class="invalid-feedback" *ngIf="submitted && f['description'].errors">
+                                        <div *ngIf="f['description'].errors['required']">
+                                            Description is required
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer flex-column border-top-0">
+                        <button type="button" class="next-btn btn btn-lg btn-primary w-100 mx-0 mb-2" (click)="proceedToNext()">
+                Submit Details
+              </button>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </ng-container>
+
+    <ng-container *ngIf="!step1">
+        <h3 class="heading">Order Details and Charges </h3>
+        <div class="modal modal-sheet position-static d-block py-1 " tabindex="-1" role="dialog" id="modalSheet">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content rounded-4">
+                    <div class="modal-header border-bottom-0">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body py-0">
+                        <form [formGroup]="step2Form" (ngSubmit)="save()">
+                            <div class="form-row" style="">
+                                <div class="form-group ">
+                                    <label for="inputReqId"><b>Request Id</b></label>
+                                    <input type="number" class="form-control" id="inputReqId" [readonly]="readonly" formControlName="requestId" />
+                                </div>
+                                <div class="form-group ">
+                                    <label for="inputPrcCharge"><b>Processing Charge</b></label>
+                                    <input type="number" class="form-control" id="inputPrcCharge" [readonly]="readonly" formControlName="totalCharges" />
+                                </div>
+                                <div class="form-group ">
+                                    <label for="inputPackCharge"><b>Packaging Charge</b></label>
+                                    <input type="number" class="form-control" id="inputPackCharge" [readonly]="readonly" formControlName="packageCharges" />
+                                </div>
+                            </div>
+
+                            <div class="form-row" >
+                                <div class="form-group ">
+                                    <label for="inputDelCharge"><b>Delivery Charge</b></label>
+                                    <input type="number" class="form-control" id="inputDelCharge" [readonly]="readonly" formControlName="deliveryCharges" />
+                                </div>
+
+                                <div class="form-group ">
+                                    <label for="inputDOF"><b>Date of Delivery</b></label>
+                                    <input type="text" class="form-control" id="inputDOF" [readonly]="readonly" formControlName="dateOfDelivery" />
+                                </div>
+
+                                <div class="form-group py-1">
+                                    <label for="inlineFormCustomSelectPref"><b>Do you want to proceed Further?</b></label
+                    >
+                    <div>
+                      <input
+                        id="Unfulfill"
+                        type="radio"
+                        value="Unfulfill"
+                        [checked]="status === 'Unfulfill'"
+                        name="status"
+                        formControlName="status"
+                      />
+                      <label for="Unfulfill">&nbsp;No</label>
+                                </div>
+                                <div>
+                                    <input id="Fulfill" type="radio" value="Fulfill" [checked]="status === 'Fulfill'" name="status" formControlName="status" />
+                                    <label for="Fulfill">&nbsp;Yes</label>
+                                </div>
+                            </div>
+                    </div>
+                    <button type="submit" class="save-btn btn btn-lg btn-primary w-100 mx-0 mb-2">
+                  Submit Details
+                </button>
+                    </form>
+                </div>
+              
+            </div>
+        </div>
+        </div>
+    </ng-container>
+    </div>
+</ng-container>

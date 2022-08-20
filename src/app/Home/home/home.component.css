@@ -1,0 +1,53 @@
+.val {
+    color: #DC3545;
+}
+
+.note {
+    color: #DC3545;
+    display: flex;
+    justify-content: center;
+}
+
+.heading {
+    text-align: center;
+    padding: inherit;
+    background-color: black;
+    color: white;
+}
+
+p {
+    display: block;
+    justify-content: center;
+}
+
+.next-btn {
+    color: #87c5ba;
+    background-color: black;
+    width: auto !important;
+    margin: 10px;
+    float: right;
+}
+
+.modal-footer {
+    position: relative;
+}
+
+.cancel-btn {
+    color: #87c5ba;
+    background-color: black;
+    margin: 10px;
+    float: right;
+    width: 76px !important;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.save-btn {
+    color: #87c5ba;
+    background-color: black;
+    width: auto !important;
+    margin: 10px;
+    position: relative;
+    right: -514px;
+}

@@ -1,0 +1,20 @@
+<ng-container *ngIf="!view">
+    <img style="width: 100%;" src="../../../assets/return.jpg">
+</ng-container>
+<ng-container *ngIf="view">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th *ngFor="let head of headers" scope="col">{{ head.toUpperCase() }}</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <tr *ngFor="let data of datas">
+                    <td *ngFor="let value of headers">{{ data[value] }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</ng-container>

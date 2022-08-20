@@ -1,0 +1,16 @@
+.signin-btn {
+    color: #87c5ba;
+    background-color: black;
+}
+
+.signup {
+    color: #87c5ba;
+    background-color: black;
+}
+
+.text-muted {
+    color: black !important;
+}
+.back{
+    background-image: url('../../../assets/images/return.jpg');
+}

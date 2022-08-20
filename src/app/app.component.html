@@ -1,0 +1,40 @@
+<div class="p-3 text-white" style="background-color:#4378a7">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <div class="logo"><h3><b style="margin-left: -80px;">Return Order Management</b></h3></div>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li>
+                    <a routerLink="/" class="nav-link px-2 text-secondary"></a>
+                </li>
+                <li>
+                    <a routerLink="/view" class="nav-link px-2 text-secondary"></a>
+                </li>
+            </ul>
+
+            <div class="text-end">
+                
+                    <a routerLink="/" class="btn btn-info mx-4"><b class="text-white">Home</b></a>
+                
+               
+        <button type="button" class="btn btn-info" (click)="login()">
+            <b class="text-white">{{but}}</b>
+          </button>
+          
+            </div>
+        </div>
+    </div>
+</div>
+
+<div >
+    <router-outlet></router-outlet>
+    <br />
+</div>
+
+<div class="">
+    <footer style="height: 30px; background-color:#4378a7">
+        <div>
+            <p style="color: #ecedef; text-align: center;">© - 2022 Return Order Management, Inc</p>
+    </div>
+  </footer>
+</div>
